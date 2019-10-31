@@ -1,2 +1,2 @@
 # HomeworkTracker
- A simple django webappfor me to track my homework
+ A simple django web app for me to track my homework
