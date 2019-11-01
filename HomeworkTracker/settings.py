@@ -20,8 +20,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open('secret_key.txt') as f:
-    SECRET_KEY = f.read().strip()
+def set_secret_key_env():
+    # Generating a SECRET_KEY. Will be auto-generated the first time this file is interpreted.
+    try:
+        os.environ['SECRET_KEY']
+    except KeyError:
+        import random
+        os.environ['SECRET_KEY'] = \
+            ''.join([random.SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)') for i in range(50)])
+
+set_secret_key_env()
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -125,12 +134,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
-
-# Security
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-
-X_FRAME_OPTIONS = "DENY"
-
-SECURE_CONTENT_TYPE_NOSNIFF = True
-SECURE_BROWSER_XSS_FILTER = True
