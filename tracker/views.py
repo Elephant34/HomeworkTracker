@@ -8,3 +8,6 @@ def home(request):
 
 def about(request):
     return render(request, 'tracker/about.html', {})
+
+def account(request):
+    return render(request, "tracker/account.html", {})
