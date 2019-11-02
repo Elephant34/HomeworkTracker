@@ -3,10 +3,18 @@
 {% block title %}Sign Up{% endblock %}
 
 {% block content %}
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign up</button>
-  </form>
+<h2>Sign up</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Sign up</button>
+</form>
+<p><h3>Privacy Notice</h3></p>
+<p>
+  <strong>This is a dumb website made by a studient for fun out of bordom.</strong>
+  Please do not give this sign any personal data- <strong>IT IS NOT SECURE</strong>
+  I know enough but web security that this isn't a good example but I don't know enough to fix it.
+  Do not use your password here anywhere else. Heck don't use your username here anywhere else.
+  Do not give me your personal data I do not want it.
+</p>
 {% endblock %}
