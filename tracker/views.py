@@ -5,7 +5,7 @@ from .models import Homework
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def home(request):
-    homework = Homework.objects.filter(user=request.user.id)
+    homework = Homework.objects.filter(user=request.user.id)  # pylint: disable=no-member
     return render(request, 'tracker/home.html', {"homework": homework})
 
 def about(request):
