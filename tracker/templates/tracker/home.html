@@ -3,6 +3,19 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<p>This site is still in development. To be honest I don't know why yu created an account</p>
-<p>If you look back later I might have done somthing but for now every page is filler</p>
+<table width=100%>
+    <tr>
+        <th>Subject</th>
+        <th>Task</th>
+        <th>Due Date</th>
+    </tr>
+    <tr>
+        {% for task in homework %}
+            <th>{{task.subject}}</th>
+            <th>{{task.task}}</th>
+            <th>{{task.due_date}}</th>
+        {% endfor %}
+    </tr>
+</table> 
+
 {% endblock %}

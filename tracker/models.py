@@ -10,4 +10,4 @@ class Homework(models.Model):
     due_date = models.DateField(default=timezone.now)
 
     def __str__(self):
-        return self.subject + str(self.due_date)
+        return self.subject + " " + str(self.due_date)
