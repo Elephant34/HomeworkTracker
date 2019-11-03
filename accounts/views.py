@@ -1,6 +1,7 @@
+from django.contrib.auth import login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import render, redirect
-from django.contrib.auth import login
+from django.shortcuts import redirect, render
 
 
 def signup(request):
@@ -14,6 +15,11 @@ def signup(request):
     else:
         form = UserCreationForm()
 
-    return render(request = request,
-                  template_name = "signup.html",
-                  context={"form":form})
+    return render(request, "signup.html", {"form":form})
+
+@login_required(login_url='/accounts/login/')
+def delete(request):
+    request.user.is_active = False
+    request.user.save()
+    logout(request)
+    return render(request, "delete.html", {})
