@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 
 
 def signup(request):
@@ -14,6 +14,10 @@ def signup(request):
     else:
         form = UserCreationForm()
 
-    return render(request = request,
-                  template_name = "signup.html",
-                  context={"form":form})
+    return render(request, "signup.html", {"form":form})
+
+def delete(request):
+    request.user.is_active = False
+    request.user.save()
+    logout(request)
+    return render(request, "delete.html", {})
