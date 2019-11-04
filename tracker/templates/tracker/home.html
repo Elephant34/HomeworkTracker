@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Home{% endblock %}
+
+{% block HTMLheader %}<link rel="stylesheet" href="{% static 'css/home.css' %}" />{% endblock %}
 
 {% block content %}
 
 <a href="#new">Add Homework</a>
 <br />
 
-<table width=100%>
+<table>
     <tr>
         <th>Subject</th>
         <th>Task</th>
